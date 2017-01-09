@@ -1,5 +1,8 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
+export PATH="$HOME/broadway/bin:$PATH"
+export ZSH_THEME="agnoster"
+DEFAULT_USER=`whoami`
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
@@ -39,3 +42,12 @@ do
 done
 
 unset config_files
+
+# Load the theme
+if [ ! "$ZSH_THEME" = ""  ]; then
+	if [ -f "$ZSH/$ZSH_THEME.zsh-theme" ]; then
+	  source "$ZSH/$ZSH_THEME.zsh-theme"
+	elif [ -f "$ZSH/themes/$ZSH_THEME.zsh-theme" ]; then
+	  source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+	fi
+fi
